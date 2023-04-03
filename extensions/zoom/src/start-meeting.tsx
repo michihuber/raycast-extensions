@@ -10,7 +10,8 @@ export default async function Command() {
 
     const meeting = await createInstantMeeting(token);
 
-    await open(meeting.join_url);
+    let client_url = meeting.join_url.replace("https:", "zoommtg:");
+    await open(client_url);
 
     await Clipboard.copy(meeting.join_url);
     await showHUD("Copied Join URL to clipboard");
